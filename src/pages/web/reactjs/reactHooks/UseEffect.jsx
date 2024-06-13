@@ -41,7 +41,7 @@ const EffectApi = () => {
   return (
     <div className="border rounded p-2 max-w-min">
       Effect Pemanggilan API jsonplaceholder (https://jsonplaceholder.typicode.com/users)
-      {data.map((item) => (
+      {data?.map((item) => (
         <div key={item.id}>{item.name}</div>
       ))}
     </div>

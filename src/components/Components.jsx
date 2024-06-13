@@ -15,7 +15,7 @@ import { useState } from "react";
 export function Title({ className, children, left = false }) {
   return (
     <h1
-      className={`${className} text-xl my-2 mb-3 font-medium capitalize flex items-center gap-2 ${
+      className={`${className} text-xl my-2 font-medium capitalize flex items-center gap-2 ${
         left ? "justify-start" : "justify-center"
       }`}
     >

@@ -1,5 +1,5 @@
 import { FaSun, FaMoon, FaGithub, FaBars, FaXmark } from "react-icons/fa6";
-import { removeOpenNav, toggleDark, toggleOpenNav } from "../app/features/basicSlice";
+import { removeOpenAside, removeOpenNav, toggleDark, toggleOpenNav } from "../app/features/basicSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, ScrollRestoration } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -38,10 +38,11 @@ export default function Header() {
 
 // nav
 const NavBtn = () => {
-  const { openNav } = useSelector((state) => state.basic);
+  const { openNav, openAside } = useSelector((state) => state.basic);
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(toggleOpenNav());
+    if (openAside) dispatch(removeOpenAside());
   };
 
   return (

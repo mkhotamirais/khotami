@@ -70,9 +70,7 @@ export const AsideLinks = ({ className }) => {
             onClick={handleClick}
             to={menu.href}
             key={i}
-            className={`${
-              active === menu.href.split("/")[2] ? "text-cyan-500" : "text-slate-500"
-            } hover:text-cyan-500 py-1 capitalize`}
+            className={`${active === menu.href.split("/")[2] ? "text-cyan-500" : ""} hover:text-cyan-500 py-1 capitalize`}
           >
             {menu.text}
           </NavLink>
@@ -99,7 +97,7 @@ export const AsideCollapse = ({ className }) => {
       onClick={(e) => e.stopPropagation()}
       className={`z-40 sm:hidden ${className} ${dark ? "bg-slate-800" : "bg-white"} ${
         openAside ? "scale-x-100" : "scale-x-0"
-      } origin-left p-3 fixed top-16 bottom-0 left-0 w-3/4 shadow border-r rounded-r-lg transition-all duration-150`}
+      } overflow-y-scroll origin-left p-3 fixed top-16 bottom-0 left-0 w-3/4 shadow border-r rounded-r-lg transition-all duration-150`}
     >
       <AsideLinks />
     </div>

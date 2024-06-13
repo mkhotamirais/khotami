@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>center div methods</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            border: 1px solid;
+        }
+
+        .methods {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .method1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .method2 {
+            display: grid;
+            place-items: center;
+        }
+
+        .method3 {
+            position: relative;
+        }
+
+        .method3 div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .method4 {
+            display: block;
+            text-align: center;
+        }
+
+        .method4 div {
+            display: inline-block;
+            vertical-align: middle;
+            /* Agar benar-benar di tengah jika ada konten lain */
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>center div methods</h1>
+    <h4>flexbox</h4>
+    <section class="methods method1">
+        <div>content</div>
+    </section>
+    <h4>grid</h4>
+    <section class="methods method2">
+        <div>content</div>
+    </section>
+    <h4>positioning</h4>
+    <section class="methods method3">
+        <div>content</div>
+    </section>
+    <h4>margin auto</h4>
+    <section class="methods method4">
+        <div>content</div>
+    </section>
+</body>
+
+</html>

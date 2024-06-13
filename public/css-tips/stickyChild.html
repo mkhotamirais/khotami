@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sticky child</title>
+    <style>
+        body {
+            height: 200vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            height: 4rem;
+            border-bottom: 1px solid;
+            background-color: white;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 0 2rem;
+        }
+
+        .title {
+            position: sticky;
+            top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>sticky child</h1>
+    </header>
+    <div class="container">
+        <div>
+            <div class="title">a</div>
+            <ul>
+                <li>ahmad</li>
+                <li>abdul</li>
+                <li>agus</li>
+                <li>ayu</li>
+            </ul>
+        </div>
+        <div>
+            <div class="title">b</div>
+            <ul>
+                <li>budi</li>
+                <li>bintang</li>
+                <li>bela</li>
+                <li>bulan</li>
+            </ul>
+        </div>
+        <div>
+            <div class="title">c</div>
+            <ul>
+                <li>cinta</li>
+                <li>cici</li>
+                <li>cin</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -68,24 +68,101 @@ console.log(obj.panggil1("ahmad")); // ES5 method with property property-name an
 );
 const JsClass = () => (
   <pre className="text-sm">{`
-    // CLASS (constructor function) AND PROTOTYPE ()
+CLASS (constructor function) AND PROTOTYPE ()
 // Class: penulisan constructor function dengan es6
-// Prototype: mekanisme yang memungkinkan objek untuk mewarisi properti dan metode dari objek lain
-class Kelas {
-    constructor(id, name) {
-      this.id = id;
-      this.name = name;
-    }
-    panggil(name) {
-      return "Hello property " + this.name + " and parameter " + name;
-    }
+class Person {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  panggil(name) {
+    console.log("hello param " + name + " and property " + this.name);
+  }
 }
-const John = new Kelas(1, "john");
-console.log(John.panggil("doe"), new Kelas(2, "brendan").panggil("eich"));
+const john = new Person(1, "john");
+john.panggil("doe"); // output: "hello param doe and property john"
+
+// inheritance
+// jika tidak ada konstruktor maka defaultnya menggunakan kostruktor parent
+class Child extends Person {
+  panggil() {
+    console.log("hello " + this.name);
+  }
+}
+const brendan = new Child(1, "brendan");
+brendan.panggil(); // output: "hello brendan"
+// jika ada konstruktor maka perlu menggunakan super dan semua paramnya, tidak boleh hanya sebagian;
+class Child2 extends Person {
+  constructor(id, name, role) {
+    super(id, name);
+    this.role = role;
+  }
+  panggil(name) {
+    super.panggil(name);
+    console.log("hello " + this.name);
+  }
+}
+const Ahmad = new Child2(1, "ahmad", "admin");
+Ahmad.panggil("abdul"); // output: "hello param abdul and property ahmad" dan "hello ahmad"
+
+// getter dan setter
+class GetSet {
+  constructor(name, age) {
+    this.name = name;
+    this._age = age;
+  }
+  get age() {
+    return this._age;
+  }
+  set age(val) {
+    if (val < 0) {
+      console.log("umur tidak bisa negatif");
+    } else {
+      this._age = val;
+    }
+  }
+  panggil() {
+    console.log("name: " this.name + " age: " + this.age);
+  }
+}
+const Budi = new GetSet("budi", 10);
+// mengguakan getter
+console.log(Budi.age); // output: 10
+// meggunakan setter
+Budi.age = 20;
+console.log(Budi.age); // output: 20
+Budi.age = -10;
+console.log(Budi.age); // output: "umur tidak bisa negatif" dan 20
+// getter setter contoh lain
+class GetSet2 {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  get area() {
+    return this.width * this.height;
+  }
+  set area(value) {
+    throw new Error("area tidak bisa diatur secara langsung. ubah lebar atau tinggi");
+  }
+  panggil() {
+    console.log("width: " + this.width + ", height: " + this.height + " area: " + this.area);
+  }
+}
+const rect = new GetSet2(10, 20);
+// get area
+console.log(rect.area); // 200
+// set area secara lagsung
+try {
+  rect.area = 50;
+} catch (error) {
+  console.log(error.message); // output: area tidak bisa diatur secara langsung. ubah lebar atau tinggi
+}
 `}</pre>
 );
 const JsPrototype = () => (
   <pre className="text-sm">{`
+    // Prototype: mekanisme yang memungkinkan objek untuk mewarisi properti dan metode dari objek lain
   function Fn1(nama, umur) {
         this.nama = nama;
         this.umur = umur;

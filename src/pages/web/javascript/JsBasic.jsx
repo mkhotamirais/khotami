@@ -1,13 +1,14 @@
 import { Acc } from "../../../components/Components";
+import { P } from "../../../components/Tags";
 
 const JsKeywords = () => (
   <div>
-    <b>Definition</b> Javascript is a lightweight interpreted (just-in-time compiled) programming language with first-class
-    function. (mdn) <br />
-    here is an explanation from chatgpt <br />
-    interpreted programming language is a type of programming langauge. <br />
-    first-class function is function that is treated like any other variable, this means the function can be: assigned to a
-    variable, passed as an argument, returned from a function, stored in data structures like arrays and objects <br />
+    <P>Javascript is a lightweight interpreted (just-in-time compiled) programming language with first-class function</P>
+    <P>interpreted programming language is a type of programming langauge.</P>
+    <P>
+      first-class function is function that is treated like any other variable, this means the function can be: assigned to a
+      variable, passed as an argument, returned from a function, stored in data structures like arrays and objects.
+    </P>
     <b>history</b> Javascript was invented by brendan eich in 1995 and become an ECMA standard in 1997
     <b>history of ECMAScript</b>
     <h2>JsBasic</h2>
@@ -23,23 +24,33 @@ const JsKeywords = () => (
 );
 
 const JsDataTypes = () => (
-  <pre className="text-sm">
-    {`
+  <div>
+    Dalam javascript ada 7 tipe data primitif (string, number, bigint, boolean, null, undefined, symbol) dan 1 tipe data
+    non-primitif (object) ada 11 instance: object biasa, array, function, date, regexp, map, set, weakmap, weakset, promise,
+    error. <br />
+    tipe data object dan instance object adalah dua hal yang berbeda 1. object: kumpulan property berupa pasangan key:value,
+    deklarasinya dengan kurung kurawal, keynya harus unik dan tidak berurutan, valuenya bisa berupa tipe data apapun.
+    property yang memiliki value function disebut method. Method bawaan object methods nya Object.keys, Object.values dll,
+    bisa diiterasi dengan for ... in. <br />
+    <pre className="text-sm">
+      {`
 // TIPE DATA
 // tipe data primitif
-let num = 10; // number
+let num = 10; // number // bulat (int) desimal (floating point)
+let bint = 10n; // bigint
 let str = "a"; // string
 let bool = true; // boolean (ini adalah bug js)
-let nul = null; // object (ini adalah bug js)
-let und; // undefined
-let simbol = Symbol("unique"); // symbol
-// tipe data komposit
+let nul = null; // object (ini adalah bug js) // variabel tanpa nilai atau non-esisten secara sengaja
+let und; // undefined // variabel yang belum diinisiasi atau properti yang tidak ada nilai, nilai defaultnya undefined
+let simbol = Symbol("unique"); // symbol // es6 identitas unik
+// tipe data non primitif (object)
 let obj = { id: 1, name: "ahamd" }; // object
 let arr = ["ahmad", "abdul"]; // object (array adalah object)
 let fn = function () {console.log("halo");}; // function
 console.log(typeof num, "dst")
 `}
-  </pre>
+    </pre>
+  </div>
 );
 
 const JsFalsyTruthy = () => (
@@ -156,7 +167,7 @@ res = str.match(/l/g); // ['l', 'l', 'l'] // .match(searchVal = str|regex)
 
 const JsArray = () => (
   <pre className="text-sm">{`
-// ARRAY
+ARRAY: kumpulan data yang diurutkan dan diakses melalui index numerik dimulai dari 0 dan dideklarasikan menggunakan tanda kurung siku
 const arrInherit = ["a", "b", ["aa", "bb", ["aaa", "bbb"]]];
 const arr = ["a", "b", "c"];
 let res;
@@ -321,16 +332,16 @@ console.log(
 
 const jsTheoryMenus = [
   { text: "Key Words", content: <JsKeywords /> },
-  { text: "Data Types", content: <JsDataTypes /> },
+  { text: "Data Type", content: <JsDataTypes /> },
+  { text: "String", content: <JsString /> },
+  { text: "Number & Math", content: <JsNumberMath /> },
+  { text: "Array", content: <JsArray /> },
+  { text: "Function", content: <JsFunction /> },
   { text: "Falsy Truthy", content: <JsFalsyTruthy /> },
   { text: "Looping", content: <JsLooping /> },
-  { text: "Number & Math", content: <JsNumberMath /> },
-  { text: "String", content: <JsString /> },
-  { text: "Array", content: <JsArray /> },
   { text: "Map Filter Reduce", content: <JsMapFilterReduce /> },
-  { text: "Function", content: <JsFunction /> },
   { text: "Closure & Nested Function", content: <JsClosureNested /> },
-  { text: "HOF & Callback", content: <JsHofCallback /> },
+  { text: "Higher Order Function (HOF) & Callback", content: <JsHofCallback /> },
   { text: "Scope & This", content: <JsScopeThis /> },
 ];
 

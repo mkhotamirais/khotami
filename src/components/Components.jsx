@@ -224,25 +224,29 @@ export function Tabs({ initialActive = null, menus = [], type = "content", desc 
 }
 Tabs.propTypes;
 
-export function Acc({ menus }) {
+export function Acc({ menus, sort = false }) {
   const [active, setActive] = useState(null);
   const handleClick = (text) => {
     setActive((prev) => (prev === text ? null : text));
   };
-  return menus
-    .sort((a, b) => (a.text.toLowerCase() < b.text.toLowerCase() ? -1 : a.text.toLowerCase() > b.text.toLowerCase() ? 1 : 0))
-    .map((item, i) => (
-      <div key={i}>
-        <button
-          onClick={() => handleClick(item.text)}
-          className="flex justify-between gap-1 items-center border-b py-2 w-full hover:text-cyan-600"
-        >
-          <div className="text-left">{item.text}</div>
-          <div className="min-w-max">{active === item.text ? <FaCircleMinus /> : <FaCirclePlus />}</div>
-        </button>
-        <div className={`${active === item.text ? "h-max" : "h-0"} overflow-hidden transition-all duration-150`}>
-          {item.content}
-        </div>
+  let content = menus;
+  if (sort)
+    content = content.sort((a, b) =>
+      a.text.toLowerCase() < b.text.toLowerCase() ? -1 : a.text.toLowerCase() > b.text.toLowerCase() ? 1 : 0
+    );
+  else content = menus;
+  return content.map((item, i) => (
+    <div key={i}>
+      <button
+        onClick={() => handleClick(item.text)}
+        className="flex justify-between gap-1 items-center border-b py-2 w-full hover:text-cyan-600"
+      >
+        <div className="text-left">{item.text}</div>
+        <div className="min-w-max">{active === item.text ? <FaCircleMinus /> : <FaCirclePlus />}</div>
+      </button>
+      <div className={`${active === item.text ? "h-max" : "h-0"} text-sm overflow-hidden transition-all duration-150`}>
+        {item.content}
       </div>
-    ));
+    </div>
+  ));
 }

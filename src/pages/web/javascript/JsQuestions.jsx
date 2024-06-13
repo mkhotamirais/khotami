@@ -30,28 +30,7 @@ const VarConstLet = () => (
   </div>
 );
 
-const DataTypes = () => (
-  <div>
-    Dalam javascript ada 7 tipe data primitif (string, number, bigint, boolean, null, undefined, symbol) dan 1 tipe data
-    non-primitif (object) <br />
-    1. String: teks atau urutan karakter // `hello world` <br />
-    2. Number: bilangan bulat (integer) dan desimal (floating point) // `10` <br />
-    3. BigInt: bilangan sanget besar // `1000n` <br />
-    4. Boolean: true dan false <br />
-    5. Undefined: variabel yang belum diinisiasi atau properti yang tidak ada nilai, nilai defaultnya undefined // const
-    name; <br />
-    6. Null: nilai kosong, variabel tanpa nilai atau non-esisten secara sengaja // const name = null; <br />
-    7. Symbol: es6 identitas unik <br />
-    8. Tipe data Object: ada 11 instance (object biasa, array, function, date, regexp, map, set, weakmap, weakset, promise,
-    error) * tipe data object dan instance object adalah dua hal yang berbeda. Berikut penjelasan singkat instance yang
-    bertipe object. <br />
-    1. object: kumpulan property berupa pasangan key:value, deklarasinya dengan kurung kurawal, keynya harus unik dan tidak
-    berurutan, valuenya bisa berupa tipe data apapun. property yang memiliki value function disebut method. Method bawaan
-    object methods nya Object.keys, Object.values dll, bisa diiterasi dengan for ... in. <br />
-    2. array: kumpulan data yang diurutkan dan diakses melalui index numerik dimulai dari 0 dan dideklarasikan menggunakan
-    tanda kurung siku. methodnya push, opo, shift dll, bisa diiterasi dengan for ... of atau forEach
-  </div>
-);
+const DataTypes = () => <div>dipindah </div>;
 
 const NullObject = () => (
   <div>

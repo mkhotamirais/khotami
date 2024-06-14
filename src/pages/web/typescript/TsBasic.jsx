@@ -101,34 +101,34 @@ const Lessons = () => (
 // Tipe data biasa (string, number, boolean, array, null, undefined, object, function)
 let data: string = "john"; // string: tipe data untuk teks
 let data: number = 10;
-    // number: tipe data untuk integer or floading point
-    // 1_000_000 underscore utuk mempermudah membaca
+  // number: tipe data untuk integer or floading point
+  // 1_000_000 underscore utuk mempermudah membaca
 let data: boolean = true; // boolean: tipe data untuk nilai true atau false
 let data: string[] = ["john", "doe", "ahmad"];
 let data: (number | string) = ["john", 1, "doe", 2]; // bisa campur number atau string
-    // array: tipe data untuk koleksi nilai dengan jenis tertentu // isinya string semua;
+  // array: tipe data untuk koleksi nilai dengan jenis tertentu // isinya string semua;
 let data: { readonly id: number; name: string, active?: boolean } = {id: 1, name: "john" }
 data.id = 2 // readonly: id tidak bisa diubah karena readonly
 data.name = "doe" // bisa diubah karena tidak readonly
-    // object: tipe data untuk nilai non-primitif // valuenya object yang isinya sesuai value dan tipe data dalam objectnya;
-    // optional chainig ( ? )
+  // object: tipe data untuk nilai non-primitif // valuenya object yang isinya sesuai value dan tipe data dalam objectnya;
+  // optional chainig ( ? )
 let data: null = null
 let data: undefined = undefined
 function fn(id: number, name: string = "person", active?: boolean): void { console.log('hello world') }
-    // function: tipe data untuk mendefinisikan bentuk fungsi termasuk parameter dan return type nya
-    // return type, void return type
-    // parameters: id, number, name
-    // optional parameter ( ? )
-    // default parameter ( "person" )
-    // rest parameter (...), type aliases
+  // function: tipe data untuk mendefinisikan bentuk fungsi termasuk parameter dan return type nya
+  // return type, void return type
+  // parameters: id, number, name
+  // optional parameter ( ? )
+  // default parameter ( "person" )
+  // rest parameter (...), type aliases
 
 // Tipe data khusus (any, unknown, tuple, enum, literal, void, never, union, intersection)
 let data: any = "john"
-    // any: tipe data yang menyimpan nilai dari jenis apapun, artinya tipe data apa saja, minimalisir penggunaannya
+  // any: tipe data yang menyimpan nilai dari jenis apapun, artinya tipe data apa saja, minimalisir penggunaannya
 let data: unknown = "john"
-    // unknown: alternatif aman dari any
+  // unknown: alternatif aman dari any
 let data: [string, number, boolean] = ["john", 10, true]
-    // tupple: tipe data array dengan jumlah elemen tetap dan sudah ditentukan untuk tiap elemen, valuenya array dengan menyesuaikan urutan tipenya
+  // tupple: tipe data array dengan jumlah elemen tetap dan sudah ditentukan untuk tiap elemen, valuenya array dengan menyesuaikan urutan tipenya
 enum Color1 {Red, Green, Blue}
 enum Color2 {Red=2, Green, Blue}
 enum Color3 {Red="merah", Green="hijau", Blue: "biru"}
@@ -136,41 +136,38 @@ let data: Color1 = Color1.Red // output: 0
 let data: Color1 = Color1.Blue // output: 2
 let data: Color2 = Color2.Green // output: 3
 let data: Color3 = Color3.Red // output: "merah"
-    // enum: tipe data untuk menyimpan kumpulan nilai konstan
-    // numeric enum default 0, nilai selanjutnya mengikuti urutan bilangan dari nilai pertama.
-    // numeric enum initializer, enum pertama diberi nilai angka tertentu, 
-    // fully initializer, semua enum diberi nilai.
+  // enum: tipe data untuk menyimpan kumpulan nilai konstan
+  // numeric enum default 0, nilai selanjutnya mengikuti urutan bilangan dari nilai pertama.
+  // numeric enum initializer, enum pertama diberi nilai angka tertentu, 
+  // fully initializer, semua enum diberi nilai.
 type Color = "red" | "green" | "blue"
 let data: Color = "red"
-    // literal: tipe data yang benar benar spesifik untuk sebuah nilai
+  // literal: tipe data yang benar benar spesifik untuk sebuah nilai
 function fn():void { console.log("hello world") }
-    // void: tipe data untuk fungsi yang tidak mengembalikan nilai
+  // void: tipe data untuk fungsi yang tidak mengembalikan nilai
 function fn(message: string):never { throw new Error(message) }
-    // never: tipe data untuk nilai yang tidak pernah terjadi
+  // never: tipe data untuk nilai yang tidak pernah terjadi
 let data: string | number | boolean | null = "ahmad"
-    // union types ( | ): tipe data yang bisa memiliki lebih dari satu tipe, valuenya bisa string, number atau boolean
-    // | null : nullable
+  // union types ( | ): tipe data yang bisa memiliki lebih dari satu tipe, valuenya bisa string, number atau boolean
+  // | null : nullable
 type Admin = {id: number, role: string}
 type Employee = {name: string, role: string}
 type AdminEmployee = admin & employee
 let data: AdminEmployee = {id: 1, name: "john", role: "admin"}
-    // intersection ( & ): tipe data yang menggabungka dua atau lebih tipe data.
+  // intersection ( & ): tipe data yang menggabungka dua atau lebih tipe data.
 
 // Type aliases and interfaces
 type namaType = string
 let nama: namaType = "john"
-    // type aliases digunakan untuk memberi nama tipe custom
+  // type aliases digunakan untuk memberi nama tipe custom
 interface Person { id: number, name: string }
 interface Admin extends Person { role: string }
 interface Employee extends Person { active: boolean }
 let Person1: Admin = {id: 1, name: "john", role: "admin"},
 let Person2: Employee = {id: 1, name: "doe", active: true}
-    // interface: sama dengan type aliases tapi hanya bisa diterapkan pada object, tapi bisa di-extend
-`}</pre>
-);
-const Lesson2 = () => (
-  <div>
-    <pre>{`
+  // interface: sama dengan type aliases tapi hanya bisa diterapkan pada object, tapi bisa di-extend
+
+// Casting
 casting adalah proses override type, tapi ia tidak megubah tipe data dalam variabel
 casting dengan "as" atau <> fungsinya sama.
 let x: unknown = "hello"
@@ -180,6 +177,11 @@ console.log((5 as string).length) // juga tidak bisa
 console.log((<string>x).length) // output 5
 let y = "hello"
 console.log(((y as unknows) as number).length) // undefined
+`}</pre>
+);
+const Lesson2 = () => (
+  <div>
+    <pre>{`
 `}</pre>
   </div>
 );

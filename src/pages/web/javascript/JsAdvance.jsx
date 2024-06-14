@@ -158,6 +158,28 @@ try {
 } catch (error) {
   console.log(error.message); // output: area tidak bisa diatur secara langsung. ubah lebar atau tinggi
 }
+
+
+// static class dibuat untuk class itu sendiri
+class Person {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  static role = "admin";
+  static halo(x) {
+    return "halo " + x;
+  }
+  static panggil(x) {
+    return x.id + ", " + x.name;
+  }
+}
+const ahmad = new Person(1, "ahmad");
+console.log(ahmad.name);
+console.log(Person.role);
+console.log(Person.halo("siti"));
+console.log(Person.panggil(ahmad));
+
 `}</pre>
 );
 const JsPrototype = () => (
@@ -175,7 +197,9 @@ const JsPrototype = () => (
       };
       const Abdul = new Fn1("abdul", 22);
       console.log(Abdul);
-      console.log(Abdul.panggil());`}</pre>
+      console.log(Abdul.panggil());
+    
+      `}</pre>
 );
 const JsDestructuring = () => (
   <pre className="text-sm">{`

@@ -97,23 +97,24 @@ const TsNanti = () => (
   </div>
 );
 const Lessons = () => (
-  <pre>{`
-// Tipe data biasa (string, number, boolean, array, null, undefined, object, function)
-let data: string = "john"; // string: tipe data untuk teks
-let data: number = 10;
-  // number: tipe data untuk integer or floading point
-  // 1_000_000 underscore utuk mempermudah membaca
-let data: boolean = true; // boolean: tipe data untuk nilai true atau false
-let data: string[] = ["john", "doe", "ahmad"];
-let data: (number | string) = ["john", 1, "doe", 2]; // bisa campur number atau string
-  // array: tipe data untuk koleksi nilai dengan jenis tertentu // isinya string semua;
+  <pre className="text-xs">{`
+// Tipe Data (T)
+// T biasa (string, number, boolean, array, null, undefined, object, function)
+let data: string = "john"; // string: T for teks
+let data: number = 10; // number: T for integer or decimal, // 1_000_000 underscore utuk mempermudah membaca
+let data: boolean = true; // boolean: T for true/false value
+let data: string[] = ["john", "doe", "ahmad"]; array: T for koleksi nilai dengan jenis tertentu // isinya string semua;
+let data: (number | string)[] = ["john", 1, "doe", 2]; // bisa campur number atau string
+let data: null = null // T for null
+let data: undefined = undefined // T for undefined
+let data: {id: number, name: string} = {id: 1, name: "john"} // 
+let data = function(a:string){console.log(a)}
+
 let data: { readonly id: number; name: string, active?: boolean } = {id: 1, name: "john" }
 data.id = 2 // readonly: id tidak bisa diubah karena readonly
 data.name = "doe" // bisa diubah karena tidak readonly
   // object: tipe data untuk nilai non-primitif // valuenya object yang isinya sesuai value dan tipe data dalam objectnya;
   // optional chainig ( ? )
-let data: null = null
-let data: undefined = undefined
 function fn(id: number, name: string = "person", active?: boolean): void { console.log('hello world') }
   // function: tipe data untuk mendefinisikan bentuk fungsi termasuk parameter dan return type nya
   // return type, void return type
@@ -122,27 +123,20 @@ function fn(id: number, name: string = "person", active?: boolean): void { conso
   // default parameter ( "person" )
   // rest parameter (...), type aliases
 
-// Tipe data khusus (any, unknown, tuple, enum, literal, void, never, union, intersection)
-let data: any = "john"
-  // any: tipe data yang menyimpan nilai dari jenis apapun, artinya tipe data apa saja, minimalisir penggunaannya
-let data: unknown = "john"
-  // unknown: alternatif aman dari any
-let data: [string, number, boolean] = ["john", 10, true]
-  // tupple: tipe data array dengan jumlah elemen tetap dan sudah ditentukan untuk tiap elemen, valuenya array dengan menyesuaikan urutan tipenya
+// T khusus (any, unknown, tuple, enum, literal, void, never, union, intersection)
+let data: any = "john" // any: T for anything, minimalisir penggunaannya
+let data: unknown = "john" // unknown: alternatif aman dari any
+let data: [string, number, boolean] = ["john", 10, true] // T for array dengan komposisi dan urutan yang pasti
 enum Color1 {Red, Green, Blue}
 enum Color2 {Red=2, Green, Blue}
 enum Color3 {Red="merah", Green="hijau", Blue: "biru"}
-let data: Color1 = Color1.Red // output: 0
-let data: Color1 = Color1.Blue // output: 2
-let data: Color2 = Color2.Green // output: 3
-let data: Color3 = Color3.Red // output: "merah"
-  // enum: tipe data untuk menyimpan kumpulan nilai konstan
-  // numeric enum default 0, nilai selanjutnya mengikuti urutan bilangan dari nilai pertama.
-  // numeric enum initializer, enum pertama diberi nilai angka tertentu, 
-  // fully initializer, semua enum diberi nilai.
-type Color = "red" | "green" | "blue"
-let data: Color = "red"
-  // literal: tipe data yang benar benar spesifik untuk sebuah nilai
+let data: Color1 = Color1.Red // output: 0 // enum: T for koleksi nilai konstan
+let data: Color1 = Color1.Blue // output: 2 // numeric enum, nilai selanjutnya mengikuti urutan bilangan dari nilai pertama.
+let data: Color2 = Color2.Green // output: 3 // numeric enum initializer, default 0, enum pertama diberi nilai angka tertentu, 
+let data: Color3 = Color3.Red // output: "merah" // fully initializer, semua enum diberi nilai.
+let data: "red" | "blue" = "red" // T like union, dengan tipe data spesifik.
+
+
 function fn():void { console.log("hello world") }
   // void: tipe data untuk fungsi yang tidak mengembalikan nilai
 function fn(message: string):never { throw new Error(message) }

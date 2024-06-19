@@ -19,12 +19,12 @@ import Vcs from "./pages/web/vcs/Vcs.jsx";
 import Vscode from "./pages/web/vscode/Vscode.jsx";
 import Ts from "./pages/web/typescript/Ts.jsx";
 import Course from "./pages/web/course/Course.jsx";
-import Umum from "./pages/web/umum/Umum.jsx";
 import Mongodb from "./pages/web/mongodb/Mongodb.jsx";
 import Mysql from "./pages/web/mysql/Mysql.jsx";
 import Reactjs from "./pages/web/reactjs/Reactjs.jsx";
 import Nodejs from "./pages/web/nodejs/Nodejs.jsx";
 import Expressjs from "./pages/web/expressjs/Expressjs.jsx";
+import Framer from "./pages/web/framer/Framer.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,12 +40,12 @@ const router = createBrowserRouter(
         <Route path="vscode" element={<Vscode />} />
         <Route path="ts" element={<Ts />} />
         <Route path="course" element={<Course />} />
-        <Route path="umum" element={<Umum />} />
         <Route path="mongodb" element={<Mongodb />} />
         <Route path="mysql" element={<Mysql />} />
         <Route path="expressjs" element={<Expressjs />} />
         <Route path="reactjs" element={<Reactjs />} />
         <Route path="nodejs" element={<Nodejs />} />
+        <Route path="framer" element={<Framer />} />
       </Route>
       <Route path="apps" element={<Apps />}>
         <Route index element={<Comp />} />

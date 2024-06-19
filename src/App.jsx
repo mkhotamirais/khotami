@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className={`${dark ? "bg-slate-800 text-white" : "bg-white"} text-gray-700`}>
       <Header />
-      <main onClick={handleClick} className="px-3 lg:px-12 min-h-screen">
+      <main onClick={handleClick} className="px-3 lg:px-16 min-h-screen">
         {path[1] ? (
           <div className="grid items-start gap-1 grid-cols-1 sm:grid-cols-4 lg:grid-cols-6">
             <AsideCollapse />

@@ -4,18 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, ScrollRestoration } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { usePath } from "./Hooks";
-
-const navMenus = [
-  { href: "", text: "home" },
-  { href: "web", text: "web" },
-  { href: "apps", text: "apps" },
-];
+import { navMenus } from "../lib/data";
 
 export default function Header() {
   const { dark } = useSelector((state) => state.basic);
   return (
     <>
-      <header className={`z-30 ${dark ? "bg-slate-800" : "bg-white"} h-16 sticky top-0 border-b px-3 lg:px-12`}>
+      <header className={`z-30 ${dark ? "bg-slate-800" : "bg-white"} h-16 sticky top-0 border-b px-3 lg:px-16`}>
         <div className="flex h-full justify-between items-center gap-5">
           <div className="min-w-max flex gap-4 uppercase">
             <Logo />

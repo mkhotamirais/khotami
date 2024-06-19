@@ -174,7 +174,7 @@ export function ModalBool({ children, openModal, title = "delete all", onClose, 
 }
 ModalBool.propTypes;
 
-export function Tabs({ initialActive = null, menus = [], type = "content", desc = false }) {
+export function Tabs({ initialActive = null, menus = [], type = "content", iframeHeight = "h-auto", desc = false }) {
   const [active, setActive] = useState(initialActive);
   return (
     <div className="mb-8">
@@ -193,7 +193,7 @@ export function Tabs({ initialActive = null, menus = [], type = "content", desc 
         menus.map((item, i) => (
           <div key={i} className={`${active === item.text ? "block" : "hidden"} border rounded p-2 overflow-y-scroll`}>
             <div className="text-lg mb-3">{item.text}</div>
-            {desc && <div>{item.description}</div>}
+            {desc ? <div>{item.description}</div> : <div>no description</div>}
             <div className="">{item.content}</div>
           </div>
         ))}
@@ -216,7 +216,8 @@ export function Tabs({ initialActive = null, menus = [], type = "content", desc 
                 <FaArrowUpRightFromSquare className="text-sm" />
               </div>
             </a>
-            <iframe src={item.src} className="w-full h-72" />
+            {desc ? <div>{item.description}</div> : <div>no description</div>}
+            <iframe src={item.src} className={`w-full ${iframeHeight}`} />
           </div>
         ))}
     </div>

@@ -4,28 +4,7 @@ import { removeOpenAside, removeOpenNav, toggleOpenAside } from "../app/features
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePath } from "./Hooks";
-
-const webMenus = [
-  { href: "/web/html", text: "html" },
-  { href: "/web/css", text: "css" },
-  { href: "/web/js", text: "js" },
-  { href: "/web/php", text: "php" },
-  { href: "/web/vcs", text: "vcs" },
-  { href: "/web/vscode", text: "vscode" },
-  { href: "/web/ts", text: "ts" },
-  { href: "/web/course", text: "course" },
-  { href: "/web/umum", text: "umum" },
-  { href: "/web/mongodb", text: "mongodb" },
-  { href: "/web/mysql", text: "mysql" },
-  { href: "/web/reactjs", text: "react" },
-  { href: "/web/expressjs", text: "express" },
-  { href: "/web/nodejs", text: "node" },
-];
-
-const appsMenus = [
-  { href: "/apps/components", text: "components" },
-  { href: "/apps/todo", text: "todo" },
-];
+import { appsMenus, webMenus } from "../lib/data";
 
 export const AsideBtn = ({ className }) => {
   const dispatch = useDispatch();

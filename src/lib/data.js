@@ -65,6 +65,11 @@ export const cssTipsMenus = [
   },
 ];
 
+export const canvasMenus = [
+  { src: "../../canvas/canvas1/index.html", text: "canvas1", description: "canvas 1 deskripsi" },
+  { src: "../../canvas/canvas2/index.html", text: "canvas2", description: "canvas 2 deskripsi" },
+];
+
 export const simpleWebpageMenus = [
   { src: "../../staticweb/mrwd1/index.html", text: "mrwd1", description: "referensi yt mr.web designer" },
   { src: "../../staticweb/mrwd2/index.html", text: "mrwd2", description: "referensi yt mr.web designer" },

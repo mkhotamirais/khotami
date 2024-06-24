@@ -1,6 +1,6 @@
 import { Tabs } from "../components/Components";
 import Hero from "../components/Hero";
-import { cssTipsMenus, simpleWebpageMenus, vanillaComponentsMenus } from "../lib/data";
+import { canvasMenus, cssTipsMenus, simpleWebpageMenus, vanillaComponentsMenus } from "../lib/data";
 import {
   BasicWeb,
   CssFwAndDesign,
@@ -31,6 +31,7 @@ export default function Home() {
   return (
     <section className="mt-5">
       <Hero />
+      <Tabs title="VanillaComponents" initialActive={"canvas1"} menus={canvasMenus} type="iframe" />
       <Tabs title="reference" initialActive={"Basic Website"} menus={referenceMenus} type="content" />
       <Tabs
         title="css tips"

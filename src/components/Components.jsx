@@ -8,14 +8,24 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { usePath } from "./Hooks";
-import { useSelector } from "react-redux";
 import { PiSpinner } from "react-icons/pi";
 import { useState } from "react";
+
+export const BgHero = ({ className }) => (
+  <div
+    className={`${className} flex gap-5 h-2/3 justify-between absolute top-10 w-[90vw] left-1/2 -translate-x-1/2 *:blur-3xl`}
+  >
+    <div className="w-1/3 h-full bg-purple-50 dark:bg-purple-950 rounded-full rounded-tl-none"></div>
+    <div className="w-1/3 h-full bg-cyan-50 dark:bg-cyan-950 rounded-full"></div>
+    <div className="w-1/3 h-full bg-blue-50 dark:bg-blue-950 rounded-full rounded-br-none"></div>
+  </div>
+);
+BgHero.propTypes;
 
 export function Title({ className, children, left = false }) {
   return (
     <h1
-      className={`${className} text-xl my-2 font-medium capitalize flex items-center gap-2 ${
+      className={`${className} text-2xl my-3 font-medium capitalize flex items-center gap-2 ${
         left ? "justify-start" : "justify-center"
       }`}
     >
@@ -76,8 +86,16 @@ export function Breadcrumb({ className }) {
 }
 Breadcrumb.propTypes;
 
-export function Modal({ children, onClose, itemId, modalId, closeBtn = false, confirmDel = false, submitDel, loadDel }) {
-  const { dark } = useSelector((state) => state.basic);
+export function Modal({
+  children,
+  onClose,
+  itemId,
+  modalId,
+  closeBtn = false,
+  confirmDel = false,
+  submitDel,
+  loadDel,
+}) {
   return (
     <div
       onClick={onClose}
@@ -87,7 +105,7 @@ export function Modal({ children, onClose, itemId, modalId, closeBtn = false, co
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`${dark ? "bg-slate-900" : "bg-white"} ${
+        className={`dark:bg-slate-900 bg-white ${
           modalId === itemId ? "scale-100" : "scale-0"
         } origin-top w-full sm:w-3/4 md:w-1/2 xl:w-1/3 mx-3 border rounded-lg p-4 relative transition-all duration-150`}
       >
@@ -113,7 +131,11 @@ export function Modal({ children, onClose, itemId, modalId, closeBtn = false, co
               >
                 {loadDel ? <PiSpinner className="animate-spin text-lg" /> : "Delete"}
               </button>
-              <button type="button" onClick={onClose} className="bg-slate-500 rounded p-1 px-2 text-white hover:opacity-70">
+              <button
+                type="button"
+                onClick={onClose}
+                className="bg-slate-500 rounded p-1 px-2 text-white hover:opacity-70"
+              >
                 Cancel
               </button>
             </div>
@@ -125,8 +147,16 @@ export function Modal({ children, onClose, itemId, modalId, closeBtn = false, co
 }
 Modal.propTypes;
 
-export function ModalBool({ children, openModal, title = "delete all", onClose, closeBtn, confirmDel, submitDel, loadDel }) {
-  const { dark } = useSelector((state) => state.basic);
+export function ModalBool({
+  children,
+  openModal,
+  title = "delete all",
+  onClose,
+  closeBtn,
+  confirmDel,
+  submitDel,
+  loadDel,
+}) {
   return (
     <div
       onClick={onClose}
@@ -136,7 +166,7 @@ export function ModalBool({ children, openModal, title = "delete all", onClose, 
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`${dark ? "bg-slate-900" : "bg-white"} ${
+        className={`dark:bg-slate-900 bg-white ${
           openModal ? "scale-100" : "scale-0"
         } origin-top w-full sm:w-3/4 md:w-1/2 xl:w-1/3 mx-3 border rounded-lg p-4 relative transition-all duration-150`}
       >
@@ -162,7 +192,11 @@ export function ModalBool({ children, openModal, title = "delete all", onClose, 
               >
                 {loadDel ? <PiSpinner className="animate-spin text-lg" /> : "Delete"}
               </button>
-              <button type="button" onClick={onClose} className="bg-slate-500 rounded p-1 px-2 text-white hover:opacity-70">
+              <button
+                type="button"
+                onClick={onClose}
+                className="bg-slate-500 rounded p-1 px-2 text-white hover:opacity-70"
+              >
                 Cancel
               </button>
             </div>
@@ -174,53 +208,70 @@ export function ModalBool({ children, openModal, title = "delete all", onClose, 
 }
 ModalBool.propTypes;
 
-export function Tabs({ initialActive = null, menus = [], type = "content", iframeHeight = "h-auto", desc = false }) {
+export function Tabs({
+  title = "judul",
+  initialActive = null,
+  menus = [],
+  type = "content",
+  className,
+  iframeHeight = 400,
+}) {
   const [active, setActive] = useState(initialActive);
   return (
-    <div className="mb-8">
-      <div className="flex gap-1 justify-center flex-wrap my-2 text-sm">
-        {menus.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(item.text)}
-            className={`${active === item.text ? "bg-cyan-700" : ""} bg-cyan-500 rounded-lg leading-none p-1 text-white`}
-          >
-            {item.text}
-          </button>
-        ))}
+    <article>
+      <Title>{title}</Title>
+      <div className="mb-10">
+        <div className="flex gap-1 justify-center flex-wrap my-2 text-sm max-w-full sm:max-w-[36rem] mx-auto">
+          {menus.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(item.text)}
+              className={`${
+                active === item.text ? "bg-cyan-700" : ""
+              } bg-cyan-500 border-2 border-cyan-500 hover:border-indigo-500 rounded-lg leading-none p-1 text-white`}
+            >
+              {item.text}
+            </button>
+          ))}
+        </div>
+        {type === "content" &&
+          menus.map((item, i) => (
+            <div
+              key={i}
+              className={`${
+                active === item.text ? "block" : "hidden"
+              } border rounded-xl shadow-md dark:bg-transparent bg-white p-2 overflow-y-scroll ${className}`}
+            >
+              <div className="text-2xl mb-3 w-fit mx-auto">{item.text}</div>
+              {item?.description ? <div className="text-center">{item.description}</div> : <div>no description</div>}
+              {item?.content && <div className="flex">{item.content}</div>}
+            </div>
+          ))}
+        {type === "iframe" &&
+          menus.map((item, i) => (
+            <div
+              key={i}
+              className={`${
+                active === item.text ? "block" : "hidden"
+              } border flex-grow rounded-xl shadow-md dark:bg-transparent bg-white p-2 text-center flex flex-col gap-3 ${className}`}
+            >
+              <a
+                href={item.src}
+                className="text-lg hover:text-cyan-500 w-fit mx-auto"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex justify-center gap-1">
+                  <span className="capitalize text-xl underline">{item.text}</span>
+                  <FaArrowUpRightFromSquare className="text-[0.6rem]" />
+                </div>
+              </a>
+              {item?.description ? <div>{item.description}</div> : <div>no description</div>}
+              <iframe height={iframeHeight} src={item.src} className={`${className}`} />
+            </div>
+          ))}
       </div>
-      {type === "content" &&
-        menus.map((item, i) => (
-          <div key={i} className={`${active === item.text ? "block" : "hidden"} border rounded p-2 overflow-y-scroll`}>
-            <div className="text-lg mb-3">{item.text}</div>
-            {desc ? <div>{item.description}</div> : <div>no description</div>}
-            <div className="">{item.content}</div>
-          </div>
-        ))}
-      {type === "btnLink" &&
-        menus.map((item, i) => (
-          <div key={i} className={`${active === item.text ? "block" : "hidden"} border rounded p-2 text-center`}>
-            <div className="text-lg mb-3">{item.text}</div>
-            <div className="flex gap-4 text-2xl justify-center">{item.content}</div>
-          </div>
-        ))}
-      {type === "iframe" &&
-        menus.map((item, i) => (
-          <div
-            key={i}
-            className={`${active === item.text ? "block" : "hidden"} border rounded p-2 text-center flex flex-col gap-3`}
-          >
-            <a href={item.src} className="text-lg" target="_blank" rel="noopener noreferrer">
-              <div className="flex justify-center gap-1">
-                <span className="capitalize text-xl underline">{item.text}</span>
-                <FaArrowUpRightFromSquare className="text-sm" />
-              </div>
-            </a>
-            {desc ? <div>{item.description}</div> : <div>no description</div>}
-            <iframe src={item.src} className={`w-full ${iframeHeight}`} />
-          </div>
-        ))}
-    </div>
+    </article>
   );
 }
 Tabs.propTypes;

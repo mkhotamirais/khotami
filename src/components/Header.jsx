@@ -1,5 +1,5 @@
 import { FaSun, FaMoon, FaGithub, FaBars, FaXmark } from "react-icons/fa6";
-import { removeOpenAside, removeOpenNav, toggleDark, toggleOpenNav } from "../app/features/basicSlice";
+import { removeOpenAside, removeOpenNav, toggleOpenNav, toggleTheme } from "../app/features/basicSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, ScrollRestoration } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -7,10 +7,11 @@ import { usePath } from "./Hooks";
 import { navMenus } from "../lib/data";
 
 export default function Header() {
-  const { dark } = useSelector((state) => state.basic);
   return (
     <>
-      <header className={`z-30 ${dark ? "bg-slate-800" : "bg-white"} h-16 sticky top-0 border-b px-3 lg:px-16`}>
+      <header
+        className={`z-30 dark:bg-slate-800 bg-white bg-opacity-70 dark:bg-opacity-70 backdrop-blur-sm shadow-md h-16 sticky top-0 border-b px-3 md:px-16 lg:px-24`}
+      >
         <div className="flex h-full justify-between items-center gap-5">
           <div className="min-w-max flex gap-4 uppercase">
             <Logo />
@@ -18,7 +19,7 @@ export default function Header() {
           <div className="w-full">
             <NavMain />
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <DarkMode />
             <SourceCode />
             <NavBtn />
@@ -83,12 +84,12 @@ const NavMain = () => {
 };
 
 const NavCollapse = () => {
-  const { dark, openNav } = useSelector((state) => state.basic);
+  const { openNav } = useSelector((state) => state.basic);
   return (
     <div
-      className={`z-50 block sm:hidden ${dark ? "bg-slate-800" : "bg-white"} ${
+      className={`z-50 block sm:hidden dark:bg-slate-800 bg-white ${
         openNav ? "scale-y-100" : "scale-y-0"
-      } origin-top fixed top-16 w-full border-b shadow rounded-lg p-3 transition-all duration-100`}
+      } origin-top fixed top-16 w-full border-b shadow rounded-b-lg p-3 transition-all duration-150`}
     >
       <div className="flex flex-col">
         <NavContent classLink={"py-2 border-b rounded"} />
@@ -115,12 +116,19 @@ const SourceCode = () => {
 };
 
 const DarkMode = () => {
-  const { dark } = useSelector((state) => state.basic);
+  const { theme } = useSelector((state) => state.basic);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    theme === "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+  }, [theme]);
+
   return (
-    <button onClick={() => dispatch(toggleDark())} className="w-5 h-5 text-xl overflow-hidden">
-      <FaMoon className={`${dark ? "-translate-y-full" : "translate-y-0"} transition-all duration-100`} />
-      <FaSun className={`${dark ? "-translate-y-full" : "translate-y-0"} transition-all duration-100`} />
+    <button onClick={() => dispatch(toggleTheme())} className="w-5 h-5 text-xl overflow-hidden">
+      <FaMoon className={`${theme === "dark" ? "-translate-y-full" : "translate-y-0"} transition-all duration-100`} />
+      <FaSun className={`${theme === "dark" ? "-translate-y-full" : "translate-y-0"} transition-all duration-100`} />
     </button>
   );
 };

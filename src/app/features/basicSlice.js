@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  dark: JSON.parse(localStorage.getItem("darkKhotami")) || false,
+  theme: JSON.parse(localStorage.getItem("khotamiTheme")) || "dark",
   openNav: false,
   openAside: false,
 };
@@ -10,12 +10,9 @@ const basicSlice = createSlice({
   name: "basic",
   initialState,
   reducers: {
-    toggleDark(state) {
-      state.dark = !state.dark;
-      localStorage.setItem("khotamiDark", JSON.stringify(state.dark));
-    },
-    removeDark(state) {
-      state.dark = false;
+    toggleTheme(state) {
+      state.theme = state.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("khotamiTheme", JSON.stringify(state.theme));
     },
     toggleOpenNav(state) {
       state.openNav = !state.openNav;
@@ -32,5 +29,5 @@ const basicSlice = createSlice({
   },
 });
 
-export const { toggleDark, removeDark, toggleOpenNav, removeOpenNav, toggleOpenAside, removeOpenAside } = basicSlice.actions;
+export const { toggleTheme, toggleOpenNav, removeOpenNav, toggleOpenAside, removeOpenAside } = basicSlice.actions;
 export default basicSlice.reducer;

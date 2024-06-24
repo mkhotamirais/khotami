@@ -1,24 +1,46 @@
-import { Tabs, Title } from "../components/Components";
+import { Tabs } from "../components/Components";
+import Hero from "../components/Hero";
 import { cssTipsMenus, simpleWebpageMenus, vanillaComponentsMenus } from "../lib/data";
-import Reference from "./Reference";
+import {
+  BasicWeb,
+  CssFwAndDesign,
+  JsFwAndLib,
+  PhpFw,
+  NodeLib,
+  Deploy,
+  BuildTool,
+  Database,
+  Vcs,
+  ApiPlatform,
+} from "./Reference";
+
+const referenceMenus = [
+  { text: "Basic Website", content: <BasicWeb />, description: "basic tools for building website" },
+  { text: "CSS Framework and Design", content: <CssFwAndDesign /> },
+  { text: "Js Framework adn Library", content: <JsFwAndLib /> },
+  { text: "PHP Framework", content: <PhpFw /> },
+  { text: "Node Library", content: <NodeLib /> },
+  { text: "Deploy", content: <Deploy /> },
+  { text: "Buildtool", content: <BuildTool /> },
+  { text: "Database", content: <Database /> },
+  { text: "VCS", content: <Vcs /> },
+  { text: "Api Platform", content: <ApiPlatform /> },
+];
 
 export default function Home() {
   return (
     <section className="mt-5">
-      <div className="flex flex-col md:flex-row gap-3">
-        <div>
-          <Title>Reference</Title>
-          <Reference />
-        </div>
-        <div>
-          <Title>css tips</Title>
-          <Tabs initialActive={"accordion"} menus={cssTipsMenus} type="iframe" />
-        </div>
-      </div>
-      <Title>Simple Webpage</Title>
-      <Tabs initialActive={"mrwd1"} menus={simpleWebpageMenus} type="iframe" iframeHeight="h-96" />
-      <Title>VanillaComponents</Title>
-      <Tabs initialActive={"carousel"} menus={vanillaComponentsMenus} type="iframe" iframeHeight="h-96" />
+      <Hero />
+      <Tabs title="reference" initialActive={"Basic Website"} menus={referenceMenus} type="content" />
+      <Tabs
+        title="css tips"
+        initialActive={"accordion"}
+        menus={cssTipsMenus}
+        type="iframe"
+        className={`dark:bg-white`}
+      />
+      <Tabs title="sample webpage" initialActive={"mrwd1"} menus={simpleWebpageMenus} type="iframe" />
+      <Tabs title="VanillaComponents" initialActive={"carousel"} menus={vanillaComponentsMenus} type="iframe" />
     </section>
   );
 }

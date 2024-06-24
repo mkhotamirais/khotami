@@ -24,7 +24,7 @@ import Mysql from "./pages/web/mysql/Mysql.jsx";
 import Reactjs from "./pages/web/reactjs/Reactjs.jsx";
 import Nodejs from "./pages/web/nodejs/Nodejs.jsx";
 import Expressjs from "./pages/web/expressjs/Expressjs.jsx";
-import Framer from "./pages/web/framer/Framer.jsx";
+import Framer from "./pages/apps/framer/Framer.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +51,7 @@ const router = createBrowserRouter(
         <Route index element={<Comp />} />
         <Route path="components" element={<Comp />} />
         <Route path="todo" element={<Todo />} />
+        <Route path="framer" element={<Framer />} />
       </Route>
     </Route>
   )

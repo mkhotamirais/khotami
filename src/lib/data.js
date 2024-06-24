@@ -26,6 +26,7 @@ export const appsMenus = [
   { href: "/apps/components", text: "components" },
   { href: "/apps/todo", text: "todo" },
   { href: "/apps/framer", text: "framer" },
+  { href: "/apps/animasi-kanvas", text: "animasi kanvas" },
 ];
 
 // sub menus

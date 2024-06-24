@@ -14,17 +14,481 @@
         flex-wrap: wrap;
         justify-content: space-around;
       }
+      div {
+        border: 1px solid gray;
+        padding: 2px;
+        margin: 5px;
+        border-radius: 5px;
+      }
+      img {
+        display: none;
+      }
+      #clock {
+        background-color: #333;
+      }
     </style>
   </head>
   <body>
+    <div>
+      Summary: const canvas = documet.getElementById('canvas'); ctx = canvas.getContext('2d') <br />
+      - Method: beginPath(), closePath(), moveTo(x,y), lineTo(x,y), stroke(), rect(x,y,w,h), strokeRect(x,y,w,h), arc(x,
+      y, radius, startAngle, endAngle, counterclockwise), clearRect(x,y,w,h), fill(), quadraticCurveTo(cpx, cpy, x, y),
+      bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) fillRect(x,y,w,h), createLinearGradient(x0, y0, x1, y1),
+      addColorStop(0|1, string), createRadialGradient(x0, y0, r0, x1, y1, r1), fillText(text, x, y, maxwidth),
+      strokeText(text, x,y,maxwidth), drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight) only image
+      required;
+      <br />
+      - Property: strokeStyle: string; fillStyle: string; lineWidth: number; lineCap: string; font: string;
+      textBaseline: 'alphabetic:default' | 'top' | 'hanging' | 'middle' | 'idiographic' | 'bottom'; textAlign:
+      'start:default' | 'right' | 'center' | 'end'; shadowColor:string; shadowOffsetX:number; shadowOffsetY:number;
+      shadowBlur:number
+    </div>
     <section>
-      <canvas id="shape1" width="160" height="160"></canvas>
-      <canvas id="shape2" width="160" height="160"></canvas>
-      <canvas id="shape3" width="160" height="160"></canvas>
-      <canvas id="shape4" width="160" height="160"></canvas>
-      <canvas id="shape5" width="160" height="160"></canvas>
-      <canvas id="shape6" width="160" height="160"></canvas>
-      <canvas id="shape7" width="160" height="160"></canvas>
+      <!-- <canvas id="clock" width="300" height="300"></canvas> -->
+      <canvas id="shape1" width="100" height="100"></canvas>
+      <canvas id="shape2" width="100" height="100"></canvas>
+      <canvas id="shape3" width="100" height="100"></canvas>
+      <canvas id="shape4" width="100" height="100"></canvas>
+      <canvas id="shape5" width="100" height="100"></canvas>
+      <canvas id="shape6" width="100" height="100"></canvas>
+      <canvas id="shape7" width="100" height="100"></canvas>
+      <canvas id="shape8" width="100" height="100"></canvas>
+      <canvas id="shape9" width="100" height="100"></canvas>
+      <canvas id="shape10" width="100" height="100"></canvas>
+      <canvas id="shape11" width="100" height="100"></canvas>
+      <canvas id="shape12" width="100" height="100"></canvas>
+      <canvas id="shape13" width="100" height="100"></canvas>
+      <canvas id="shape14" width="100" height="100"></canvas>
+      <canvas id="shape15" width="100" height="100"></canvas>
+      <canvas id="shape16" width="100" height="100"></canvas>
+      <canvas id="shape17" width="100" height="100"></canvas>
+      <canvas id="shape18" width="100" height="100"></canvas>
+      <canvas id="shape19" width="100" height="100"></canvas>
+      <canvas id="shape20" width="100" height="100"></canvas>
+      <img id="myImage" width="10" height="10" src="./me.jpg" alt="" />
     </section>
+
+    <!-- clock -->
+    <script>
+      const clock = document.getElementById("clock");
+      const ctx = clock.getContext("2d");
+
+      let radius = clock.height / 2;
+      ctx.translate(radius, radius);
+      radius = radius * 0.9;
+      drawClock();
+
+      function drawClock() {
+        ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        // drawFace(ctx, radius);
+      }
+
+      function drawFace(ctx, radius) {
+        const grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+        grad.addColorStop(0, "#333");
+        grad.addColorStop(0.5, "white");
+        grad.addColorStop(1, "#333");
+
+        ctx.beginPath();
+        ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = radius * 0.1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+        ctx.fillStyle = "#333";
+        ctx.fill();
+      }
+    </script>
+
+    <!-- 19 -->
+    <script>
+      const s19 = document.getElementById("shape19");
+      const cs19 = s19.getContext("2d");
+      cs19.fillRect(10, 10, 50, 50);
+      cs19.translate(70, 70);
+      cs19.fillStyle = "red";
+      cs19.fillRect(50, 50, 50, 50);
+    </script>
+    <!-- 18 -->
+    <script>
+      const s18 = document.getElementById("shape18");
+      const cs18 = s18.getContext("2d");
+      const myImage = document.getElementById("myImage");
+
+      cs18.drawImage(myImage, 10, 10, 50, 50);
+    </script>
+    <!-- 17 -->
+    <script>
+      const s17 = document.getElementById("shape17");
+      const cs17 = s17.getContext("2d");
+      cs17.shadowColor = "lightblue";
+      cs17.shadowOffsetX = 5;
+      cs17.shadowOffsetY = 5;
+      //   shadowColor:string; shadowOffsetX:number; shadowOffsetY:number; shadowBlur:number
+
+      cs17.fillStyle = "blue";
+      cs17.fillRect(10, 10, 30, 30);
+
+      cs17.lineWidth = 4;
+      cs17.strokeStyle = "blue";
+      cs17.strokeRect(50, 10, 30, 30);
+
+      cs17.font = "14px Arial";
+      cs17.fillText("hello", 10, 80);
+
+      cs17.shadowColor = "lightgreen";
+      cs17.shadowOffsetX = 5;
+      cs17.shadowOffsetY = -5;
+      cs17.shadowBlur = 5;
+
+      cs17.lineWidth = 4;
+      cs17.strokeStyle = "green";
+      cs17.strokeRect(50, 60, 30, 30);
+    </script>
+    <!-- 16 -->
+    <script>
+      const s16 = document.getElementById("shape16");
+      const cs16 = s16.getContext("2d");
+      cs16.font = "14px Verdana";
+      cs16.textAlign = "center";
+      cs16.textBaseline = "middle";
+      cs16.fillText("hello world", s16.width / 2, s16.height / 2);
+    </script>
+    <!-- 15 -->
+    <script>
+      const s15 = document.getElementById("shape15");
+      const cs15 = s15.getContext("2d");
+      cs15.beginPath();
+      cs15.moveTo(0, 80);
+      cs15.lineTo(100, 80);
+      cs15.stroke();
+      cs15.closePath();
+      cs15.closePath();
+
+      cs15.beginPath();
+      cs15.moveTo(50, 0);
+      cs15.lineTo(50, 60);
+      cs15.stroke();
+      cs15.closePath();
+      cs15.closePath();
+      // textBaseline: 'alphabetic:default' | 'top' | 'hanging' | 'middle' | 'idiographic' | 'bottom'
+      // textAlign: 'start:default' | 'right' | 'center' | 'end'
+      cs15.textBaseline = "top";
+      cs15.fillText("top", 10, 80);
+      cs15.textBaseline = "middle";
+      cs15.fillText("middle", 30, 80);
+      cs15.textBaseline = "bottom";
+      cs15.fillText("bottom", 70, 80);
+
+      cs15.textAlign = "left";
+      cs15.fillText("left", 50, 20);
+      cs15.textAlign = "center";
+      cs15.fillText("center", 50, 40);
+      cs15.textAlign = "right";
+      cs15.fillText("right", 50, 60);
+    </script>
+    <!-- 14 -->
+    <script>
+      const s14 = document.getElementById("shape14");
+      const cs14 = s14.getContext("2d");
+      // font: '10px sans serif', fillText(text, x, y, maxwidth), strokeText(text, x,y,maxwidth)
+      cs14.font = "24px Arial";
+      cs14.fillText("Hello", 10, 50);
+      cs14.font = "bold italic 28px Arial";
+      cs14.strokeText("World", 15, 80);
+    </script>
+    <!-- 13 -->
+    <script>
+      const s13 = document.getElementById("shape13");
+      const cs13 = s13.getContext("2d");
+      // createRadialGradient(x0, y0, r0, x1, y1, r1)
+      const gradRad13 = cs13.createRadialGradient(50, 50, 10, 50, 50, 50);
+      gradRad13.addColorStop(0, "red");
+      gradRad13.addColorStop(0.4, "yellow");
+      gradRad13.addColorStop(1, "darkblue");
+      cs13.fillStyle = gradRad13;
+      cs13.fillRect(10, 10, 80, 80);
+      cs13.strokeRect(10, 10, 80, 80);
+    </script>
+    <!-- 12 -->
+    <script>
+      const s12 = document.getElementById("shape12");
+      const cs12 = s12.getContext("2d");
+      // createRadialGradient(x0, y0, r0, x1, y1, r1)
+      const gradRad3 = cs12.createRadialGradient(40, 50, 5, 70, 50, 50);
+      gradRad3.addColorStop(0, "red");
+      gradRad3.addColorStop(1, "yellow");
+      cs12.fillStyle = gradRad3;
+      cs12.fillRect(10, 10, 80, 80);
+      cs12.strokeRect(10, 10, 80, 80);
+    </script>
+    <!-- 11 -->
+    <script>
+      const s11 = document.getElementById("shape11");
+      const cs11 = s11.getContext("2d");
+      // createRadialGradient(x0, y0, r0, x1, y1, r1)
+      const gradRad2 = cs11.createRadialGradient(50, 50, 10, 50, 50, 50);
+      gradRad2.addColorStop(0, "red");
+      gradRad2.addColorStop(1, "yellow");
+      cs11.fillStyle = gradRad2;
+      cs11.fillRect(10, 10, 80, 80);
+      cs11.strokeRect(10, 10, 80, 80);
+    </script>
+    <!-- 10 -->
+    <script>
+      const s10 = document.getElementById("shape10");
+      const cs10 = s10.getContext("2d");
+      // createRadialGradient(x0, y0, r0, x1, y1, r1)
+      const gradRad1 = cs10.createRadialGradient(50, 50, 50, 50, 50, 10);
+      gradRad1.addColorStop(0, "red");
+      gradRad1.addColorStop(1, "yellow");
+      cs10.fillStyle = gradRad1;
+      cs10.fillRect(10, 10, 80, 80);
+      cs10.strokeRect(10, 10, 80, 80);
+    </script>
+    <!-- 9 -->
+    <script>
+      const s9 = document.getElementById("shape9");
+      const cs9 = s9.getContext("2d");
+      // createLinearGradient(x0, y0, x1, y1) start and end point
+      // addColorStop()
+      const grad = cs9.createLinearGradient(0, 0, 100, 0);
+      grad.addColorStop(0, "red");
+      grad.addColorStop(0.5, "green");
+      grad.addColorStop(1, "blue");
+      cs9.fillStyle = grad;
+      cs9.fillRect(20, 20, 60, 60);
+
+      const grad2 = cs9.createLinearGradient(0, 0, 100, 100);
+      grad2.addColorStop(0, "red");
+      grad2.addColorStop(1, "yellow");
+      cs9.strokeStyle = grad2;
+      cs9.lineWidth = 8;
+      cs9.strokeRect(10, 10, 80, 80);
+
+      const grad3 = cs9.createLinearGradient(0, 0, 0, 100);
+      grad3.addColorStop(0, "green");
+      grad3.addColorStop(1, "red");
+      cs9.fillStyle = grad3;
+      cs9.fillRect(40, 30, 20, 40);
+    </script>
+    <!-- 8 -->
+    <script>
+      const s8 = document.getElementById("shape8");
+      const cs8 = s8.getContext("2d");
+      // bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+      // cp1: first control point; cp2: seconde control point; x/y: end point
+      cs8.beginPath();
+      cs8.moveTo(10, 10);
+      cs8.bezierCurveTo(10, 90, 90, 10, 100, 100);
+      cs8.stroke();
+    </script>
+    <!-- 7 -->
+    <script>
+      const s7 = document.getElementById("shape7");
+      const cs7 = s7.getContext("2d");
+      // quadraticCurveTo(cpx, cpy, x, y) required all
+      // cpx: x control point; cpy: y control point; x: x end point; y: x end point
+      cs7.beginPath();
+      cs7.moveTo(10, 10);
+      cs7.quadraticCurveTo(0, 0, 50, 50);
+      cs7.strokeStyle = "red";
+      cs7.stroke();
+
+      cs7.beginPath();
+      cs7.moveTo(10, 10);
+      cs7.quadraticCurveTo(50, 0, 50, 50);
+      cs7.strokeStyle = "green";
+      cs7.stroke();
+
+      cs7.beginPath();
+      cs7.moveTo(10, 10);
+      cs7.quadraticCurveTo(0, 50, 50, 50);
+      cs7.strokeStyle = "blue";
+      cs7.stroke();
+
+      cs7.beginPath();
+      cs7.moveTo(10, 10);
+      cs7.quadraticCurveTo(100, 50, 50, 50);
+      cs7.strokeStyle = "cyan";
+      cs7.stroke();
+    </script>
+    <!-- 6 -->
+    <script>
+      const s6 = document.getElementById("shape6");
+      const cs6 = s6.getContext("2d");
+      cs6.beginPath();
+      cs6.moveTo(50, 50); // pusat lingkaran
+      cs6.arc(50, 50, 50, 0, Math.PI / 2);
+      cs6.fill();
+      cs6.closePath();
+
+      cs6.beginPath();
+      cs6.moveTo(50, 50); // pusat lingkaran
+      cs6.arc(50, 50, 40, 0, Math.PI);
+      cs6.fillStyle = "blue";
+      cs6.fill();
+      cs6.closePath();
+
+      cs6.beginPath();
+      cs6.moveTo(50, 50); // pusat lingkaran
+      cs6.arc(50, 50, 30, 0, Math.PI * 1.5);
+      cs6.fillStyle = "red";
+      cs6.fill();
+      cs6.closePath();
+    </script>
+    <!-- 5 -->
+    <script>
+      const s5 = document.getElementById("shape5");
+      const cs5 = s5.getContext("2d");
+
+      cs5.beginPath();
+      cs5.arc(50, 50, 50, 0, 2 * Math.PI);
+      cs5.fillStyle = "cyan";
+      cs5.fill();
+      cs5.closePath();
+
+      cs5.beginPath();
+      cs5.arc(50, 50, 40, 0, 0.5 * Math.PI);
+      cs5.fillStyle = "green";
+      cs5.fill();
+      cs5.closePath();
+
+      cs5.beginPath();
+      cs5.arc(50, 50, 30, 0, 1 * Math.PI);
+      cs5.fillStyle = "blue";
+      cs5.fill();
+      cs5.closePath();
+
+      cs5.beginPath();
+      cs5.arc(50, 50, 20, 0, 1.5 * Math.PI);
+      cs5.fillStyle = "red";
+      cs5.fill();
+      cs5.closePath();
+
+      cs5.beginPath();
+      cs5.arc(50, 50, 10, 0, 2 * Math.PI);
+      cs5.fillStyle = "yellow";
+      cs5.fill();
+      cs5.closePath();
+    </script>
+    <!-- 4 -->
+    <script>
+      // --- arc (circle)
+      const s4 = document.getElementById("shape4");
+      const cs4 = s4.getContext("2d");
+      // arc(x, y, radius, startAngle, endAngle, counterclockwise);
+      cs4.beginPath();
+      cs4.arc(50, 50, 50, 0, 2 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 45, 0, 0.5 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 40, 0, 1 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 35, 0, 1.5 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 30, 1 * Math.PI, 1.5 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 25, 1 * Math.PI, 0);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 20, 1 * Math.PI, 0.5 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+
+      cs4.beginPath();
+      cs4.arc(50, 50, 15, 1 * Math.PI, 0.9 * Math.PI);
+      cs4.stroke();
+      cs4.closePath();
+    </script>
+    <!-- 3 -->
+    <script>
+      const s3 = document.getElementById("shape3");
+      const cs3 = s3.getContext("2d");
+      cs3.beginPath();
+      cs3.moveTo(10, 10);
+      cs3.lineTo(50, 50);
+      cs3.lineTo(90, 10);
+      cs3.lineTo(90, 90);
+      cs3.lineTo(10, 90);
+      cs3.lineTo(10, 50);
+      cs3.strokeStyle = "red";
+      cs3.lineWidth = "5";
+      cs3.fillStyle = "indigo";
+      cs3.stroke();
+      cs3.fill();
+    </script>
+    <!-- 2 -->
+    <script>
+      // shape2 (rectangle)
+      const s2 = document.getElementById("shape2");
+      const cs2 = s2.getContext("2d");
+      // rect(x,y,w,h)
+      cs2.beginPath();
+      cs2.strokeStyle = "red";
+      cs2.lineWidth = 3;
+      cs2.rect(5, 5, 40, 40);
+      cs2.stroke();
+      //   rect(x, y, w, h);
+      //   strokeRect(x, y, w, h);
+      // strokeRect(x,y,w,h)
+      cs2.strokeStyle = "rgb(0 0 255 / 50%)";
+      cs2.strokeRect(55, 5, 40, 40);
+      cs2.fillStyle = "blue";
+      cs2.fill();
+      // perbedaan rect() dan strokeRect(), rect() menggunakan beginPath() dan stroke() juga menerima fill(), sedangkan strokeRect tidak.
+      // fillRect()
+      cs2.fillStyle = "green";
+      cs2.fillRect(5, 55, 40, 40);
+      cs2.fillRect(55, 55, 40, 40);
+      cs2.strokeRect(55, 55, 40, 40);
+      cs2.clearRect(70, 70, 20, 20);
+    </script>
+    <!-- 1 -->
+    <script>
+      // shape1 (line)
+      const s1 = document.getElementById("shape1");
+      const cs1 = s1.getContext("2d");
+      // beginPath(), closePath()
+      // moveTo(x,y), lineTo(x,y), stroke()
+      cs1.beginPath();
+      cs1.moveTo(0, 0);
+      cs1.lineTo(50, 50);
+      cs1.strokeStyle = "red";
+      cs1.stroke();
+      cs1.closePath();
+      // lineWidth: number; lineCap: string
+      cs1.beginPath();
+      cs1.moveTo(20, 70);
+      cs1.lineWidth = 10;
+      cs1.lineCap = "round";
+      cs1.lineTo(80, 70);
+      cs1.stroke();
+      cs1.closePath();
+    </script>
   </body>
 </html>

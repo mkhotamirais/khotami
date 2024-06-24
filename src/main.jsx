@@ -25,6 +25,7 @@ import Reactjs from "./pages/web/reactjs/Reactjs.jsx";
 import Nodejs from "./pages/web/nodejs/Nodejs.jsx";
 import Expressjs from "./pages/web/expressjs/Expressjs.jsx";
 import Framer from "./pages/apps/framer/Framer.jsx";
+import AnimasiKanvas from "./pages/apps/animasi-kanvas/AnimasiKanvas.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
         <Route path="components" element={<Comp />} />
         <Route path="todo" element={<Todo />} />
         <Route path="framer" element={<Framer />} />
+        <Route path="animasi-kanvas" element={<AnimasiKanvas />} />
       </Route>
     </Route>
   )

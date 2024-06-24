@@ -27,6 +27,7 @@ export const appsMenus = [
   { href: "/apps/todo", text: "todo" },
   { href: "/apps/framer", text: "framer" },
   { href: "/apps/animasi-kanvas", text: "animasi kanvas" },
+  { href: "/apps/landing-page", text: "landing page" },
 ];
 
 // sub menus
@@ -69,6 +70,7 @@ export const cssTipsMenus = [
 export const canvasMenus = [
   { src: "../../canvas/canvas1/index.html", text: "canvas1", description: "canvas 1 deskripsi" },
   { src: "../../canvas/canvas2/index.html", text: "canvas2", description: "canvas 2 deskripsi" },
+  { src: "../../canvas/games/snake1.html", text: "snake1", description: "canvas 2 deskripsi" },
 ];
 
 export const simpleWebpageMenus = [
